@@ -1,4 +1,4 @@
-import { isObject, getUrl, getUa, getScreen, getCookie, getTitle, uuid } from './util.js';
+import { isObject, getUrl, getUa, getScreen, getCookie, getTitle, getDpr, uuid } from './util.js';
 const config = {
 	url: ''
 };
@@ -23,6 +23,7 @@ export default data => {
 		data.cookie = getCookie();
 		data.screen = getScreen();
 		data.title = getTitle();
+		data.dpr = getDpr();
 		post(data);
 	}
 };

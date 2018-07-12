@@ -25,6 +25,10 @@ export const getTitle = () => {
 	return document.title;
 };
 
+export const getDpr = () => {
+	return window.devicePixelRatio;
+};
+
 export const isObject = value => {
 	return value && typeof value === 'object' && value.constructor === Object;
 };
