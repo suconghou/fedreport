@@ -1,4 +1,4 @@
-import { isObject, getUrl, getUa, getScreen, getCookie, getTitle, getDpr, uuid } from './util.js';
+import { isObject, getUrl, getScreen, getTitle, getDpr } from './util.js';
 const config = {
 	url: ''
 };
@@ -8,6 +8,7 @@ const post = data => {
 		try {
 			const xmlhttp = new xhr();
 			xmlhttp.open('POST', config.url, true);
+			xmlhttp.withCredentials = true;
 			xmlhttp.send(JSON.stringify(data));
 		} catch (e) {
 			console.error(e);
@@ -17,10 +18,7 @@ const post = data => {
 
 export default data => {
 	if (isObject(data)) {
-		data.uuid = uuid();
-		data.ua = getUa();
-		data.pageUrl = getUrl();
-		data.cookie = getCookie();
+		data.url = getUrl();
 		data.screen = getScreen();
 		data.title = getTitle();
 		data.dpr = getDpr();

@@ -105,3 +105,9 @@ return firstPaint - performance.timing.navigationStart;
     // with (document) 0[body.appendChild(createElement('script')).src = 'http://mvc.git.suconghou.cn:8070/home/index/hi.js']
 
 })();
+
+TODO
+
+cros
+
+httponly cookie
