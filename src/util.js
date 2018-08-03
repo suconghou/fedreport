@@ -1,3 +1,5 @@
+var toString = Object.prototype.toString;
+
 export const getUrl = () => {
 	return window.location.href;
 };
@@ -16,4 +18,12 @@ export const getDpr = () => {
 
 export const isObject = value => {
 	return value && typeof value === 'object' && value.constructor === Object;
+};
+
+export const isDate = value => {
+	return toString.apply(value) == '[object Date]';
+};
+
+export const isArray = value => {
+	return toString.apply(value) == '[object Array]';
 };

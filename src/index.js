@@ -36,6 +36,8 @@ export default {
 			});
 		} else if (isObject(data)) {
 			notify(data);
+		} else {
+			notify({ data });
 		}
 	}
 };
