@@ -7,7 +7,7 @@ export default () => {
 		let msg = reason.toString(),
 			stack;
 		if (reason instanceof Error) {
-			stack = `${error.name} ${error.message} ${error.stack}`;
+			stack = `${reason.name} ${reason.message} ${reason.stack}`;
 		}
 		const data = {
 			type: ERR_TYPES.PROMISE,

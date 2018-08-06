@@ -1,6 +1,5 @@
 import { isObject } from './util.js';
 import iframe from './handlers/iframe.js';
-import jsonp from './handlers/jsonp.js';
 import promise from './handlers/promise.js';
 import resource from './handlers/resource.js';
 import script from './handlers/script.js';
@@ -11,19 +10,16 @@ export default {
 		// 安装监控,默认全部安装
 		const { url, i, j, p, r, s } = args;
 		setUrl(url);
-		if (!i) {
+		if (i !== false) {
 			iframe();
 		}
-		if (!j) {
-			jsonp();
-		}
-		if (!p) {
+		if (p !== false) {
 			promise();
 		}
-		if (!r) {
+		if (r !== false) {
 			resource();
 		}
-		if (!s) {
+		if (s !== false) {
 			script();
 		}
 	},
