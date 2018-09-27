@@ -111,3 +111,13 @@ TODO
 cros
 
 httponly cookie
+
+window.performance 是 W3C 性能小组引入的新的 API，目前 IE9 以上的浏览器都支持。一个 performance 对象的完整结构如下图所示：
+
+用户开始打开的时间: performance.timing.navigationStart
+
+performance.getEntriesByType('paint');
+
+参考
+
+https://github.com/pwstrick/Primus/blob/master/js/primus.js

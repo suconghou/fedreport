@@ -1,6 +1,9 @@
 import { isObject, getUrl, getScreen, getTitle, getDpr } from './util.js';
+import performance from './performance.js';
+
 const config = {
-	url: ''
+	url: '',
+	rate: 0.5
 };
 const post = data => {
 	const xhr = window.XMLHttpRequest;
@@ -16,16 +19,22 @@ const post = data => {
 	}
 };
 
-export default data => {
+const notify = data => {
 	if (isObject(data)) {
 		data.url = getUrl();
 		data.screen = getScreen();
 		data.title = getTitle();
 		data.dpr = getDpr();
+		if (data.timing || Math.random() > config.rate) {
+			data.timing = performance.timing();
+		}
 		post(data);
 	}
 };
 
-export const url = url => {
+const url = url => {
 	config.url = url;
 };
+
+export default notify;
+export { url };
