@@ -1,6 +1,6 @@
 build:
 	make release && \
-	uglifyjs bundle.js -o bundle.js -c toplevel,collapse_vars=true,reduce_vars=true -m 
+	closurecompiler.sh --js_output_file=fedreport.min.js bundle.js
 dev:
 	cd src && \
 	rollup index.js -o ../bundle.js --output.name fereport -f umd -e net,fs,os,process,path,child_process,util,http,querystring,buffer -w
