@@ -21,7 +21,7 @@ const post = data => {
 
 const notify = data => {
 	if (isObject(data)) {
-		data.url = getUrl();
+		data.uri = getUrl();
 		data.screen = getScreen();
 		data.title = getTitle();
 		data.dpr = getDpr();
