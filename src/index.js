@@ -1,47 +1,22 @@
-import { isObject } from './util.js';
-import iframe from './handlers/iframe.js';
-import promise from './handlers/promise.js';
-import resource from './handlers/resource.js';
-import script from './handlers/script.js';
-import notify, { url as setUrl } from './notify.js';
+import timingInfo from './performance'
+import { getUrl } from './util.js';
+import notify from './notify.js';
 
-export default {
-	install(args) {
-		// 安装监控,默认全部安装
-		const { url, i, j, p, r, s } = args;
-		setUrl(url);
-		if (i !== false) {
-			iframe();
-		}
-		if (p !== false) {
-			promise();
-		}
-		if (r !== false) {
-			resource();
-		}
-		if (s !== false) {
-			script();
-		}
+const stat = {
+	online(uid, e, u) {
+		notify("1", { uid, e, u })
 	},
-	notify(data) {
-		// 自定义事件
-		if (data instanceof Error) {
-			notify({
-				msg: data.toString(),
-				stack: `${data.name} ${data.message} ${data.stack}`
-			});
-		} else if (isObject(data)) {
-			notify(data);
-		} else {
-			notify({ data });
+	timing() {
+		const s = timingInfo()
+		if (s) {
+			s.url = getUrl()
 		}
+		notify("2", s)
 	}
 };
 
-/**
- * 参数
- * url
- * 自定义事件格式
- * error 对象
- * object
- */
+setTimeout(() => {
+	stat.timing()
+}, 5e3)
+
+export default stat
