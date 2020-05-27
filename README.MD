@@ -1,3 +1,10 @@
+启动：    yarn start
+打包上线： yarn run build
+
+
+
+
+https://github.com/happylindz/blog/issues/5
 
 ### 在线数据统计
 
