@@ -1,9 +1,12 @@
 import timingInfo from './performance'
-import { getUrl } from './util.js';
+import { getUrl, uuid } from './util.js';
 import notify from './notify.js';
 
 const stat = {
 	online(uid, e, u) {
+		if (!uid) {
+			uid = uuid()
+		}
 		notify("1", { uid, e, u })
 	},
 	timing() {

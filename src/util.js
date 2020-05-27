@@ -1,5 +1,5 @@
 var toString = Object.prototype.toString;
-
+let uid = '';
 export const getUrl = () => {
 	return window.location.href;
 };
@@ -37,3 +37,18 @@ export const buildQuery = params => {
 		.map(k => esc(k) + '=' + esc(params[k]))
 		.join('&');
 };
+
+export const uuid = () => {
+	if (uid) {
+		return uid;
+	}
+	uid = localStorage.getItem('uuid')
+	if (!uid) {
+		function S4() {
+			return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+		}
+		uid = (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+		localStorage.setItem('uuid', uid)
+	}
+	return uid
+}
